@@ -1,20 +1,35 @@
 <?php
     include 'koneksi.php';
+    session_start();
 
-    if (isset($_POST['button'])){
+
+    if (isset($_SESSION['isLogin'])) {
+        header("Location: dashboard.php");
+    }
+
+
+        if (isset($_POST['login'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $cek_query = "SELECT * FROM users WHERE username = '$username'";
-        $cek_result = mysqli_query($connection, $cek_query);
-        if(mysqli_num_rows($cek_result) > 0){
-            echo "\nUsername sudah digunakan";
-        }else{
-            $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-            mysqli_query($connection, $query);
-            echo "Registrasi berhasil";
 
+        $query = "INSERT INTO users (username, password) VALUE ('$username', '$password')";
+        mysqli_query($connection, $query);
+
+        $login = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result = mysqli_query($connection, $login);
+
+        if($result->num_rows > 0){
+            echo "Login Sukses";
+            $_SESSION['isLogin'] = true;
+            header("Location: home.php");
+        } else {
+            echo "Login Gagal";
         }
+
+
     }
+
+
 ?>
 
 
@@ -39,16 +54,15 @@
             Facebook helps you connect and share with the people in your life.
         </p>
         <div class="login-container">
-        <form action="register.php" method="POST">
+        <form action="login.php" method="POST">
             <input class ="input-field" type="text" name="username" placeholder="Email or Phone Number">
             <br>
             <input class ="input-field" type="password" name="password" placeholder="Password">
             <br>
-            <button name="button" type="submit">Register</button>
+            <button name="login" type="submit">Log In</button>
             <a href="" class="forgor">Forgotten Password?</a>
         </form>
-        <hr>
-        <button class="create">Create New Account</button>
+    
         </div>
         <p id="footer"><a id="footer-link">Create a Page</a> for a celebrity, brand or business.</p>
     </div>

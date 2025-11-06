@@ -7,7 +7,7 @@
     $connection = mysqli_connect($host, $dbuser, $dbpass, $dbname);
 
     if ($connection) {
-        echo "Koneksi Berhasil";
+        echo "Koneksi Berhasil<br>";
     }
     else {
         echo "Koneksi Gagal: " . mysqli_connect_error();
