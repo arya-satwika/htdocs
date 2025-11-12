@@ -13,6 +13,8 @@
             mysqli_query($connection, $query);
             echo "Registrasi berhasil";
             $_SESSION['isLogin']=true;
+            $_SESSION['username']=$username;
+            
             header("location:dashboard.php");
 
         }

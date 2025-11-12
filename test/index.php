@@ -14,6 +14,7 @@
         if(mysqli_num_rows($cek_result) > 0){
             echo "\nLogin Berhasil";
             $_SESSION['isLogin'] = true;
+            $_SESSION['username'] = $username;
             header("location:dashboard.php");
         }
     }
