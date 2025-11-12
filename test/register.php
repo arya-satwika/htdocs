@@ -3,7 +3,8 @@
 
     if (isset($_POST['button'])){
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password_raw = $_POST['password'];
+        $password = hash('sha256', $password_raw);
         $cek_query = "SELECT * FROM users WHERE username = '$username'";
         $cek_result = mysqli_query($connection, $cek_query);
         if(mysqli_num_rows($cek_result) > 0){
@@ -14,7 +15,7 @@
             echo "Registrasi berhasil";
             $_SESSION['isLogin']=true;
             $_SESSION['username']=$username;
-            
+
             header("location:dashboard.php");
 
         }

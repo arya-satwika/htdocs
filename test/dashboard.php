@@ -3,7 +3,7 @@ session_start();
 include 'koneksi.php';
 if(isset($_POST['logout'])) {
     session_destroy();
-    header('location:login.php');
+    header('location:index.php');
 }
 if(isset($_POST['delete'])){
     $del_query = "DELETE FROM users WHERE username = '$_SESSION[username]'";
