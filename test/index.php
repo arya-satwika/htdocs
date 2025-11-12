@@ -5,10 +5,6 @@
         header("Location: dashboard.php");
     }
 
-
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,31 +19,10 @@
 </head>
 <body>
     <?php
-        print "
-        <h1>
-            Hello, World!
-        </h1>";
-        $nama = "mikhael";
-
-        $kum = 20;
-
-        $kumodo = ($kum != 20) ? "oasdoakoakd" : "jsiasdoiajdi";
-
-        $pohon = ['pinand', 'owokkofo', 'iujkiujkijkoijkoijkij'];
         include 'pup.html'
     ?>
     <div class="container">
         <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/300px-Facebook_Logo_%282019%29.svg.png" alt="facebook">
-        <p id="desc">
-            Facebook helps you connect and share with the people in your life.
-            <?=$nama?>
-            <?=$kumodo?>
-            <?php
-            foreach ($pohon as $poh) {
-                echo "$poh ";
-            }
-            ?>
-        </p>
         <div class="login-container">
         <form action="">
             <input class ="input-field" type="text" name="Login" placeholder="Email or Phone Number">
