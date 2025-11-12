@@ -12,6 +12,8 @@
             $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
             mysqli_query($connection, $query);
             echo "Registrasi berhasil";
+            $_SESSION['isLogin']=true;
+            header("location:dashboard.php");
 
         }
     }

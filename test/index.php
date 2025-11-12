@@ -1,8 +1,21 @@
 <?php
-    session_start();
 
+    session_start();
+    include 'koneksi.php';
     if (isset($_SESSION['isLogin'])) {
         header("Location: dashboard.php");
+    }
+
+    if(isset($_POST['button'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $cek_query = "SELECT * FROM users WHERE username = '$username'";
+        $cek_result = mysqli_query($connection, $cek_query);
+        if(mysqli_num_rows($cek_result) > 0){
+            echo "\nLogin Berhasil";
+            $_SESSION['isLogin'] = true;
+            header("location:dashboard.php");
+        }
     }
 
 ?>
@@ -24,12 +37,12 @@
     <div class="container">
         <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/300px-Facebook_Logo_%282019%29.svg.png" alt="facebook">
         <div class="login-container">
-        <form action="">
-            <input class ="input-field" type="text" name="Login" placeholder="Email or Phone Number">
+        <form action="index.php" method="POST">
+            <input class ="input-field" type="text" name="username" placeholder="Email or Phone Number">
             <br>
-            <input class ="input-field" type="password" name="Password" placeholder="Password">
+            <input class ="input-field" type="password" name="password" placeholder="Password">
             <br>
-            <button type="submit">Log In</button>
+            <button name="button" type="submit">Log In</button>
             <a href="" class="forgor">Forgotten Password?</a>
         </form>
         <hr>
