@@ -11,6 +11,9 @@ if(isset($_POST['delete'])){
     session_destroy();
     header('location:index.php');
 }
+if(isset($_POST['changePass'])){
+    header('location:ganti.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +32,7 @@ if(isset($_POST['delete'])){
     <form action="dashboard.php" method="POST">
     <button type="submit" name="logout"> logout</button>
     <button type="submit" name="delete"> delete account</button>
+    <button type="submit" name="changePass">ganti password</button>
     </form>
 </body>
 </html>
