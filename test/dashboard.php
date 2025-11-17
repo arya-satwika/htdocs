@@ -14,6 +14,9 @@ if(isset($_POST['delete'])){
 if(isset($_POST['changePass'])){
     header('location:ganti.php');
 }
+if(isset($_POST['changeName'])){
+    header('location:rename.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +36,7 @@ if(isset($_POST['changePass'])){
     <button type="submit" name="logout"> logout</button>
     <button type="submit" name="delete"> delete account</button>
     <button type="submit" name="changePass">ganti password</button>
+    <button type="submit" name="changeName">ganti nama</button>
     </form>
 </body>
 </html>
